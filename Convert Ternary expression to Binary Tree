@@ -1,0 +1,35 @@
+class GfG
+{
+   
+    public static Node convertExp(String str, int i)
+    {
+        //Write your code here
+        if(str.length()==0)
+           return null;
+        Node root=new Node(str.charAt(0));
+        Stack<Node> st=new Stack<>();
+        st.push(root);
+        int n=1;
+        while(n<str.length()){
+            if(str.charAt(n)=='?'){
+                Node p=st.peek();
+                p.left=new Node(str.charAt(n+1));
+                st.push(p.left);
+            }
+            else if(str.charAt(n)==':'){
+                st.pop();
+                Node p=st.peek();
+                p.right=new Node(str.charAt(n+1));
+                if(n+2<str.length() && str.charAt(n+2)=='?'){
+                    st.pop();
+                    st.push(p.right);
+                }
+            }
+            n+=2;
+        }
+        return root;
+    }
+}
+
+
+LINK : https://practice.geeksforgeeks.org/problems/convert-ternary-expression-to-binary-tree/1/?category[]=Strings&category[]=Strings&company[]=Amazon&company[]=Amazon&page=1&query=category[]Stringscompany[]Amazonpage1company[]Amazoncategory[]Strings#
