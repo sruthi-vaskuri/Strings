@@ -1,0 +1,35 @@
+class Solution {
+    static void allpalin(String s,ArrayList<String> list,ArrayList<ArrayList<String>> arr,int start,int n){
+        if(start>=n){
+            arr.add(new ArrayList<String>(list));
+            return;
+        }
+        for(int i=start;i<n;i++){
+            if(ispalin(s.substring(start,i+1))){
+                list.add(s.substring(start,i+1));
+                allpalin(s,list,arr,i+1,n);
+                list.remove(list.size()-1);
+            }
+        }
+    }
+    static boolean ispalin(String s){
+        StringBuffer str=new StringBuffer(s);
+        String s1=str.reverse().toString();
+        if(s1.equals(s))
+            return true;
+        return false;
+    }
+    static ArrayList<ArrayList<String>> allPalindromicPerms(String S) {
+        // code here
+        ArrayList<ArrayList<String>> arr=new ArrayList<ArrayList<String>>();
+        allpalin(S,new ArrayList<String>(),arr,0,S.length());
+        return arr;
+    }
+};
+
+
+
+LINK : https://practice.geeksforgeeks.org/problems/find-all-possible-palindromic-partitions-of-a-string/1/?category[]=Strings&category[]=Strings&company[]=Amazon&company[]=Amazon&page=1&query=category[]Stringscompany[]Amazonpage1company[]Amazoncategory[]Strings
+
+
+REFERENCE : https://www.geeksforgeeks.org/given-a-string-print-all-possible-palindromic-partition/
