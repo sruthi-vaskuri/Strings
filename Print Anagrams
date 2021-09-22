@@ -1,0 +1,26 @@
+class Solution {
+    public List<List<String>> Anagrams(String[] string_list) {
+        // Code here
+        HashMap<String,ArrayList<String>> map=new HashMap<>();
+        List<List<String> > arr = new ArrayList<List<String> >();
+        for(int i=0;i<string_list.length;i++){
+            char ch[]=string_list[i].toCharArray();
+            Arrays.sort(ch);
+            String s=String.valueOf(ch);
+            if(map.containsKey(s)){
+                map.get(s).add(string_list[i]);
+            }
+            else{
+                map.put(s,new ArrayList<String>());
+                map.get(s).add(string_list[i]);
+            }
+        }
+        for(Map.Entry<String,ArrayList<String>> e:map.entrySet()){
+            arr.add(e.getValue());
+        }
+        return arr;
+    }
+}
+
+
+LINK : https://practice.geeksforgeeks.org/problems/print-anagrams-together/1/?category[]=Strings&category[]=Strings&company[]=Amazon&company[]=Amazon&page=1&query=category[]Stringscompany[]Amazonpage1company[]Amazoncategory[]Strings
