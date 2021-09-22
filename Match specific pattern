@@ -1,0 +1,31 @@
+class GfG
+{
+public static ArrayList<String> findMatchedWords(ArrayList<String> dict, String pattern)
+	{
+	    //add code here.
+	    ArrayList<String> arr=new ArrayList<>();
+	    for(int i=0;i<dict.size();i++){
+	        if(pattern.length()!=dict.get(i).length())
+	           continue;
+	        int count1[]=new int[26];
+	        int count2[]=new int[26];
+	        boolean flag=true;
+	        for(int j=0;j<pattern.length();j++){
+	            if(count1[pattern.charAt(j)-'a']==count2[dict.get(i).charAt(j)-'a']){
+	                count1[pattern.charAt(j)-'a']++;
+	                count2[dict.get(i).charAt(j)-'a']++;
+	            }
+	            else{
+	                flag=false;
+	                break;
+	            }
+	        }
+	        if(flag==true)
+	            arr.add(dict.get(i));
+	    }
+	    return arr;
+	}
+}
+
+
+LINK : https://practice.geeksforgeeks.org/problems/match-specific-pattern/1/?category[]=Strings&category[]=Strings&company[]=Amazon&company[]=Amazon&page=1&query=category[]Stringscompany[]Amazonpage1company[]Amazoncategory[]Strings
