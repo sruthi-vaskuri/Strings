@@ -1,0 +1,22 @@
+class Solution:
+    
+    #Function to check if two strings are isomorphic.
+    def areIsomorphic(self,str1,str2):
+        if len(str1)!=len(str2):
+            return False
+        d1={}
+        d2={}
+        for i in range(len(str1)):
+            if str1[i] not in d1 and str2[i] not in d2:
+                d1[str1[i]]=1
+                d2[str2[i]]=1
+            elif d1.get(str1[i],0)==d2.get(str2[i],0):
+                d1[str1[i]]=d1.get(str1[i],0)+1
+                d2[str2[i]]=d2.get(str2[i],0)+1
+            else:
+                return False
+        return True
+
+
+
+LINK : https://practice.geeksforgeeks.org/problems/isomorphic-strings-1587115620/1#
